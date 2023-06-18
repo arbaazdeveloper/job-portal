@@ -1,5 +1,6 @@
 import React from 'react'
 import image from '../public/job-image.png'
+import Button from './Button'
 const Cards = () => {
   return (
     <div className='box-border flex flex-col items-start p-4 gap-4 w-830 h-320 left-998.12 bg-white border border-gray-300 rounded-lg p-custom-padding'>
@@ -18,7 +19,8 @@ const Cards = () => {
                     <p className=' font-poppins m-custom-top-spacing text-[#212427] text-info-size'>51-200 Employee</p>
 
                 </div>
-<button className='flex mt-5 flex-row h-custom-btn-height w-custom-btn-width justify-center items-center p-2 bg-[#1597E4] rounded-m flex-none m-custom-margin-top  border-none font-poppins font-medium text-white cursor-pointer'>Apply now</button>
+             <Button text='Apply Now' width='w-custom-btn-width' />
+            
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment} from 'react'
 import { Context } from '../context/Context'
-import Form1 from './Form1'
+import Form from './Form'
 
 const Modal = () => {
     let {isOpen, setIsOpen} = useContext(Context)
@@ -41,7 +41,7 @@ const Modal = () => {
               >
                 <Dialog.Panel className="w-form-width  transform overflow-hidden rounded-lg bg-white p-form-padding align-middle border-border-color  transition-all">
                 
-                  <Form1/>
+                  <Form/>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

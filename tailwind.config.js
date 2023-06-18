@@ -47,7 +47,8 @@ module.exports = {
       },
       colors:{
         'border-color':'#E6E6E6',
-        'placeholder-color':'#7A7A7A'
+        'placeholder-color':'#7A7A7A',
+        'error-color':'#D86161'
       },
 
     },
