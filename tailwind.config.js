@@ -33,10 +33,12 @@ module.exports = {
         'custom-margin-top':'24px 0px 0px 0px',
         'custom-top-spacing':'8px 0px 0px 0px',
         '24px':'24px',
+         '96px':'96px',
         'sm':'4px'
       },
       height:{
         'custom-btn-height':'40px',
+        '564px':'564px'
         
       },
       width:{
@@ -44,7 +46,8 @@ module.exports = {
         'form-width':'577px'
       },
       colors:{
-        'border-color':'#E6E6E6'
+        'border-color':'#E6E6E6',
+        'placeholder-color':'#7A7A7A'
       },
 
     },

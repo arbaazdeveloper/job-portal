@@ -39,7 +39,7 @@ const Modal = () => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-form-width transform overflow-hidden rounded-lg bg-white p-form-padding align-middle border-border-color  transition-all">
+                <Dialog.Panel className="w-form-width  transform overflow-hidden rounded-lg bg-white p-form-padding align-middle border-border-color  transition-all">
                 
                   <Form1/>
                 </Dialog.Panel>
