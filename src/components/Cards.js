@@ -17,7 +17,6 @@ const Cards = () => {
                     <p className=' font-poppins m-custom-top-spacing  text-[#212427] text-info-size'>Experience (1-2 years)</p>
                     <p className=' font-poppins m-custom-top-spacing text-[#212427] text-info-size'>INR (r) 30,000-50,000 / Month</p>
                     <p className=' font-poppins m-custom-top-spacing text-[#212427] text-info-size'>51-200 Employee</p>
-
                 </div>
              <Button text='Apply Now' width='w-custom-btn-width' />
             

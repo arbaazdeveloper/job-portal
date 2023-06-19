@@ -8,12 +8,12 @@ import { postRequest } from '../services/request';
 
 const Form = () => {
   const [step, setStep] = React.useState(1);
-  const {formData,setFormData,setIsOpen}=useContext(Context)
+  const {formData,setFormData,setIsOpen,showAlert}=useContext(Context)
   const [error,setError]=useState({})
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit =async  (e) => {
     e.preventDefault();
     let err=validate(formData,2)
     if(err.message){
@@ -21,10 +21,19 @@ const Form = () => {
       return
     }
     setError({})
-    let response=postRequest('jobs',formData)
-    if(response){
+    let response=await postRequest('jobs',formData)
+    if(response.status==='ok'){
       setIsOpen(false)
+      showAlert('success','Job created')
+
+      
     }
+    if(response.status==='failed'){
+      showAlert('Failed','Something went wrong')
+      
+    }
+    setFormData({'job-title':'','remote-type':'','location':'','industry':'','company-name':'','experience-max':'','experience-min':'','salary-min':'','salary-max':'','apply-type':'','total-employee':''})
+    
   };
 
   const handleNextStep = (e) => {
