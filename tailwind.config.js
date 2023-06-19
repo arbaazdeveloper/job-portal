@@ -24,7 +24,8 @@ module.exports = {
       padding:{
         'custom-padding':'16px 24px',
         'form-padding':'32px',
-        'input-padding':'8px 12px'
+        'input-padding':'8px 12px',
+        'btn-padding':'8px'
       },
       margin:{
         'custom-margin':'20px'
@@ -43,7 +44,8 @@ module.exports = {
       },
       width:{
         'custom-btn-width':'118px',
-        'form-width':'577px'
+        'form-width':'577px',
+        '147px':'147px'
       },
       colors:{
         'border-color':'#E6E6E6',

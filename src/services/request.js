@@ -35,7 +35,16 @@ const request={
               }
             
         }
+    },
+    deleteRequest:async (endpoint,id)=>{
+        let response=await axios.delete(`${url}${endpoint}/${id}`)
+        return response
+    },
+    putRequest:async (endpoint,id,data)=>{
+        let response=await axios.put(`${url}${endpoint}/${id}`,data)
+        return response
     }
+    
 }
 
-export const {postRequest}=request
+export const {postRequest,getRequest,deleteRequest,putRequest}=request

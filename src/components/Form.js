@@ -4,11 +4,11 @@ import { Context } from '../context/Context';
 import validate from '../services/validation';
 import Button from './Button';
 import Inputs from './Inputs';
-import { postRequest } from '../services/request';
+import { postRequest, putRequest } from '../services/request';
 
 const Form = () => {
   const [step, setStep] = React.useState(1);
-  const {formData,setFormData,setIsOpen,showAlert}=useContext(Context)
+  const {formData,setFormData,setModalData,showAlert,modalData}=useContext(Context)
   const [error,setError]=useState({})
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,9 +21,17 @@ const Form = () => {
       return
     }
     setError({})
+    if(modalData.type==='edit'){
+      let response=await putRequest('jobs',formData.id,formData)
+      if(response.status===200){
+        showAlert('success','Edited succesfully')
+        setModalData({isOpen:false,type:''})
+        return
+      }
+    }
     let response=await postRequest('jobs',formData)
     if(response.status==='ok'){
-      setIsOpen(false)
+      setModalData({isOpen:false,type:''})
       showAlert('success','Job created')
 
       
@@ -52,7 +60,7 @@ const Form = () => {
     <>
       {step === 1 ? <>
         <Dialog.Title as="div" className="text-lg flex justify-between w-full font-poppins leading-6 text-gray-900" >
-          <h3>Create Job</h3>
+          <h3>{modalData.type==='create'?'Create Job':'Edit Job'}</h3>
           <h3>Step 1</h3>
         </Dialog.Title>
         <form className='flex flex-col w-full mt-24px'>

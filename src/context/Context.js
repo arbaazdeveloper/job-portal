@@ -5,9 +5,10 @@ export const Context=createContext()
 
 
 const Appcontext=({children})=>{
-    let [isOpen, setIsOpen] = useState(false)
+    let [modalData, setModalData] = useState({isOpen:false,type:''})
     const [alert,setAlert]=useState(<></>)
     const[formData,setFormData]=useState({'job-title':'','remote-type':'','location':'','industry':'','company-name':'','experience-max':'','experience-min':'','salary-min':'','salary-max':'','apply-type':'','total-employee':''})
+    const [allJobs,setJobs]=useState([])
     const showAlert=(status,message)=>{
         setAlert(<><Alert status={status} message={message}/></>)
         setTimeout(() => {
@@ -16,7 +17,7 @@ const Appcontext=({children})=>{
         
     }
 
-    return <Context.Provider value={{isOpen,setIsOpen,formData,setFormData,showAlert,alert}}>
+    return <Context.Provider value={{modalData,setModalData,formData,setFormData,showAlert,alert,allJobs,setJobs}}>
         {children}
     </Context.Provider>
 }

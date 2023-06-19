@@ -6,6 +6,7 @@ const validate=(formData,step)=>{
         err['title']=true
         err['message']='This field is required'
        
+       
     }
     if(formData['remote-type'].length===0){
         err['jobType']=true
@@ -26,6 +27,8 @@ const validate=(formData,step)=>{
         err['message']='This field is required'
         
     }
+    if(step===2){
+
     if(formData['apply-type'].length===0 && step===2){
         err['apply-type']=true
         err['message']='Apply type is required'
@@ -77,6 +80,7 @@ const validate=(formData,step)=>{
         }
 
     }
+}
     return err
 }
 export default validate

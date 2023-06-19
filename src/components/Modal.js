@@ -5,16 +5,16 @@ import { Context } from '../context/Context'
 import Form from './Form'
 
 const Modal = () => {
-    let {isOpen, setIsOpen} = useContext(Context)
+    let {modalData, setModalData} = useContext(Context)
 
     function closeModal() {
-      setIsOpen(false)
+      setModalData({isOpen:false,type:''})
     }
   
     
   return (
     <>
-      <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={modalData.isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
@@ -40,7 +40,7 @@ const Modal = () => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-form-width  transform overflow-hidden rounded-lg bg-white p-form-padding align-middle border-border-color  transition-all">
-                
+                  
                   <Form/>
                 </Dialog.Panel>
               </Transition.Child>
