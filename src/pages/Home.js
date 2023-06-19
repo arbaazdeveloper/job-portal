@@ -13,7 +13,7 @@ const Home = () => {
     return (
         <>
             {alert}
-            <Button text='Create Job +' onClick={getData} width='w-100 m-2' />
+            <Button text='Create Job +' onClick={getData} width='w-100 mx-20' />
             <Modal />
             <Jobs />
         </>

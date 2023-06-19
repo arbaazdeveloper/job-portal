@@ -5,6 +5,7 @@ import validate from '../services/validation';
 import Button from './Button';
 import Inputs from './Inputs';
 import { postRequest, putRequest } from '../services/request';
+import Label from './Label';
 
 const Form = () => {
   const [step, setStep] = React.useState(1);
@@ -26,7 +27,7 @@ const Form = () => {
       if (response.status === 200) {
         setModalData({ isOpen: false, type: '' })
         showAlert('success', 'Edited succesfully')
-        
+
         setJobs(allJobs.map((obj)=>{
           if(obj.id===formData.id){
             return response.data
@@ -64,7 +65,7 @@ const Form = () => {
     setError({})
     setStep(step + 1);
   };
-  const labelStyles = 'flex flex-start text-[#212121] font-poppins my-sm'
+
   return (
     <>
       {step === 1 ? <>
@@ -74,25 +75,24 @@ const Form = () => {
         </Dialog.Title>
         <form className='flex flex-col w-full mt-24px'>
           <div className='w-full'>
-            <label htmlFor='job-title' className={`flex flex-start text-[#212121] font-poppins my-sm`}>Job Title<strong style={{ color: 'red' }}>*</strong></label>
+            <Label name='job-title' title='Job Title' required={true}/>
             <Inputs value={formData['job-title']} placeholder='ex.Ui Ux Designer' onChange={handleChange} name='job-title' hasError={error.title ? true : false} error={error} />
           </div>
-
           <div className='w-full mt-24px'>
-            <label htmlFor='job-title' className={labelStyles}>Company-name<strong style={{ color: 'red' }}>*</strong></label>
+             <Label name='company-name' required={true} title='Company-name'/>
             <Inputs value={formData['company-name']} placeholder='ex. Google' onChange={handleChange} name='company-name' hasError={error.company ? true : false} error={error} />
           </div>
           <div className='w-full mt-24px'>
-            <label htmlFor='industry' className={labelStyles}>Industry<strong style={{ color: 'red' }}>*</strong></label>
+           <Label name='industry' required={true} title='Industry'/>
             <Inputs value={formData['industry']} placeholder='ex. Information Technology' onChange={handleChange} name='industry' hasError={error.industry ? true : false} error={error} />
           </div>
           <div className='w-full flex justify-between mt-24px'>
             <div>
-              <label htmlFor='location' className={labelStyles}>Location<strong style={{ color: 'red' }}>*</strong></label>
+              <Label title='Location' name='location' required={true}/>
               <Inputs value={formData['location']} placeholder='ex. Chennai' onChange={handleChange} name='location' hasError={error.location ? true : false} error={error} />
             </div>
             <div>
-              <label htmlFor='job-title' className={labelStyles}>Remote Type<strong style={{ color: 'red' }}>*</strong></label>
+              <Label title='Remote Type' name='remote-type' required={true}/>
               <Inputs value={formData['remote-type']} placeholder='ex. in-Office' onChange={handleChange} name='remote-type' hasError={error.jobType ? true : false} error={error} />
             </div>
           </div>
@@ -100,24 +100,23 @@ const Form = () => {
             <Button width='w-custom-btn-width' text='Next' onClick={handleNextStep} />
           </div>
         </form>
-
       </> : <>
         <Dialog.Title as="div" className="text-lg flex justify-between w-full font-poppins leading-6 text-gray-900" >
           <h3>Create Job</h3>
           <h3>Step 2</h3>
         </Dialog.Title>
         <form className='flex flex-col w-full mt-24px'>
-          <label htmlFor='location' className={`flex flex-start text-[#212121] font-poppins my-sm mt-24px`}>Experience</label>
+          <Label title='Experience' name='experience' extraStyles='mt-24px' className='mt-24px'/>
           <div className='w-full flex justify-between '>
             <div>
-
               <Inputs value={formData['experience-min']} placeholder='Minimum' onChange={handleChange} name='experience-min' hasError={error['experience-min'] ? true : false} error={error} />
             </div>
             <div>
               <Inputs value={formData['experience-max']} placeholder='Maximum' onChange={handleChange} name='experience-max' hasError={error['experience-max'] ? true : false} error={error} />
             </div>
           </div>
-          <label htmlFor='location' className={`flex flex-start text-[#212121] font-poppins my-sm mt-24px`}>Salary</label>
+          {/* <label htmlFor='location' className={`flex flex-start text-[#212121] font-poppins my-sm mt-24px`}>Salary</label> */}
+        <Label name='salary' title='Salary' required={false} extraStyles='mt-24px'/>
           <div className='w-full flex justify-between'>
             <div>
               <Inputs value={formData['salary-min']} placeholder='Minimum' onChange={handleChange} name='salary-min' hasError={error['salary-min'] ? true : false} error={error} />
@@ -132,7 +131,7 @@ const Form = () => {
 
             <Inputs value={formData['total-employee']} placeholder='ex.100' onChange={handleChange} name='total-employee' hasError={error['total-employee'] ? true : false} error={error} />
           </div>
-          <label htmlFor='location' className={`flex flex-start text-[#212121] font-poppins my-sm mt-24px`}>Apply Type</label>
+          <Label name='apply-type' title='Apply Type' extraStyles={'mt-24px'}/>
           <div className=' flex justify-start'>
             <label className="inline-flex items-center">
               <input
