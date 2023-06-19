@@ -5,7 +5,6 @@ const Edit = ({data}) => {
     const {setFormData,setModalData}=useContext(Context)
     const editData=()=>{
         setFormData({id:data.id,'job-title':data.title,'company-name':data.company,location:data.location,'remote-type':data.type,industry:data.industry,'apply-type':data.applyType,'salary-min':data.salaryMinimum,'salary-max':data.salaryMaximum,'experience-min':data.experienceMinimum,'experience-max':data.experienceMaximum,'total-employee':data.employee})
-        console.log(data)
         setModalData({isOpen:true,type:'edit'})
 
     }

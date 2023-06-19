@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { deleteRequest } from '../services/request'
+import { Context } from '../context/Context'
 
 const Delete = ({id}) => {
-
+    const {allJobs,setJobs,showAlert}=useContext(Context)
     const deleteData=async()=>{
         let response=await deleteRequest('jobs',id)
-        console.group(response)
+        if(response.status===200){
+            setJobs(allJobs.filter((item)=>item.id !== id))
+            showAlert('success','Deleted sucessfully')
+        }
+        return response
+        
     }
   return (
      <button onClick={deleteData}>
