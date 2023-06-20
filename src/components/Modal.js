@@ -5,10 +5,11 @@ import { Context } from '../context/Context'
 import Form from './Form'
 
 const Modal = () => {
-    let {modalData, setModalData} = useContext(Context)
-
+    let {modalData, setModalData,setFormData} = useContext(Context)
+    let  schema={ 'job-title': '', 'remote-type': '', 'location': '', 'industry': '', 'company-name': '', 'experience-max': '', 'experience-min': '', 'salary-min': '', 'salary-max': '', 'apply-type': '', 'total-employee': '' }
     function closeModal() {
       setModalData({isOpen:false,type:''})
+      setFormData(schema)
     }
   
     
@@ -25,7 +26,7 @@ const Modal = () => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-[#000] bg-opacity-25" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">

@@ -10,10 +10,11 @@ const request={
             }
 
         } catch (error) {
-            return {err:error,status:'failed'}
+            if(error){
+                return {err:error,status:'failed'}
+            }
             
         }
-
 
     },
     getRequest:async (endpoint)=>{
@@ -23,26 +24,34 @@ const request={
                 return response.data
             }
         } catch (error) {
-            let err={}
-            if (error.response) {
-                err['status']='failed'
-                err['message']=error.response.data
-              } else if (error.request) {
-                err['request']=error.request
-                return err
-              } else {
-                 err['message']=error.message
-              }
+            if(error){
+                return {err:error,status:'failed'}
+            }
             
         }
     },
     deleteRequest:async (endpoint,id)=>{
-        let response=await axios.delete(`${url}${endpoint}/${id}`)
-        return response
+        try {
+            let response=await axios.delete(`${url}${endpoint}/${id}`)
+            return response
+            
+        } catch (error) {
+            if(error){
+                return {err:error,status:'failed'}
+            }
+        }
+       
     },
     putRequest:async (endpoint,id,data)=>{
-        let response=await axios.put(`${url}${endpoint}/${id}`,data)
-        return response
+        try {
+            let response=await axios.put(`${url}${endpoint}/${id}`,data)
+            return response
+        } catch (error) {
+            if(error){
+                return {err:error,status:'failed'}
+            }
+        }
+        
     }
     
 }

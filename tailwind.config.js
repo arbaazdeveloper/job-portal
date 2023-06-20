@@ -35,7 +35,9 @@ module.exports = {
         'custom-top-spacing':'8px 0px 0px 0px',
         '24px':'24px',
          '96px':'96px',
-        'sm':'4px'
+         'sm':'4px',
+         'lg':'10px',
+         '22px':'22px'
       },
       height:{
         'custom-btn-height':'40px',
@@ -45,13 +47,17 @@ module.exports = {
       width:{
         'custom-btn-width':'118px',
         'form-width':'577px',
-        '147px':'147px'
+        
       },
       colors:{
         'border-color':'#E6E6E6',
         'placeholder-color':'#7A7A7A',
-        'error-color':'#D86161'
+        'error-color':'#D86161',
+        'card-border':'#DADEDF'
       },
+      fontFamily: {
+        'poppins': ['Poppins']
+      }
 
     },
   },

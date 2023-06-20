@@ -38,7 +38,7 @@ const validate=(formData,step)=>{
     if(formData['salary-min']!==''){
         let reg=/^[0-9]+$/
         let result=reg.test(formData['salary-min'])
-        if(!result){
+        if(!result ){
             err['salary-min']=true
             err['message']='Invalid input'
         }
@@ -57,7 +57,7 @@ const validate=(formData,step)=>{
         let reg=/^[0-9]+$/
         let result=reg.test(formData['experience-max'])
         if(!result){
-            err['experience-max']=true
+            err['experience-min']=true
             err['message']='Invalid input'
         }
 

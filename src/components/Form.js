@@ -8,6 +8,7 @@ import { postRequest, putRequest } from '../services/request';
 import Label from './Label';
 
 const Form = () => {
+  let schema={ 'job-title': '', 'remote-type': '', 'location': '', 'industry': '', 'company-name': '', 'experience-max': '', 'experience-min': '', 'salary-min': '', 'salary-max': '', 'apply-type': '', 'total-employee': '' }
   const [step, setStep] = React.useState(1);
   const { formData, setFormData, setModalData, showAlert, modalData,allJobs,setJobs } = useContext(Context)
   const [error, setError] = useState({})
@@ -27,14 +28,18 @@ const Form = () => {
       if (response.status === 200) {
         setModalData({ isOpen: false, type: '' })
         showAlert('success', 'Edited succesfully')
-
         setJobs(allJobs.map((obj)=>{
           if(obj.id===formData.id){
             return response.data
           }
           return obj
         }))
-       
+        setFormData(schema)
+        return
+      }
+      else{
+        setModalData({ isOpen: false, type: '' })
+        showAlert('Failed','Something went wrong! unable to edit')
         return
       }
     }
@@ -47,17 +52,17 @@ const Form = () => {
 
     }
     if (response.status === 'failed') {
-      showAlert('Failed', 'Something went wrong')
+      setModalData({ isOpen: false, type: '' })
+      showAlert('Failed', 'Something went wrong! unable to add')
 
     }
-    setFormData({ 'job-title': '', 'remote-type': '', 'location': '', 'industry': '', 'company-name': '', 'experience-max': '', 'experience-min': '', 'salary-min': '', 'salary-max': '', 'apply-type': '', 'total-employee': '' })
+    setFormData(schema)
 
   };
 
   const handleNextStep = (e) => {
     e.preventDefault()
     let err = validate(formData, 1)
-
     if (err.message) {
       setError(err)
       return
@@ -88,42 +93,42 @@ const Form = () => {
           </div>
           <div className='w-full flex justify-between mt-24px'>
             <div>
-              <Label title='Location' name='location' required={true}/>
+              <Label title='Location' name='location' required={false}/>
               <Inputs value={formData['location']} placeholder='ex. Chennai' onChange={handleChange} name='location' hasError={error.location ? true : false} error={error} />
             </div>
             <div>
-              <Label title='Remote Type' name='remote-type' required={true}/>
+              <Label title='Remote Type' name='remote-type' required={false}/>
               <Inputs value={formData['remote-type']} placeholder='ex. in-Office' onChange={handleChange} name='remote-type' hasError={error.jobType ? true : false} error={error} />
             </div>
           </div>
           <div className='w-full flex flex- justify-end mt-96px'>
-            <Button width='w-custom-btn-width' text='Next' onClick={handleNextStep} />
+            <Button width='w-[72px]' text='Next' onClick={handleNextStep} />
           </div>
         </form>
       </> : <>
         <Dialog.Title as="div" className="text-lg flex justify-between w-full font-poppins leading-6 text-gray-900" >
-          <h3>Create Job</h3>
+        <h3>{modalData.type === 'create' ? 'Create Job' : 'Edit Job'}</h3>
           <h3>Step 2</h3>
         </Dialog.Title>
         <form className='flex flex-col w-full mt-24px'>
           <Label title='Experience' name='experience' extraStyles='mt-24px' className='mt-24px'/>
           <div className='w-full flex justify-between '>
             <div>
-              <Inputs value={formData['experience-min']} placeholder='Minimum' onChange={handleChange} name='experience-min' hasError={error['experience-min'] ? true : false} error={error} />
+              <Inputs value={formData['experience-min']} placeholder='Minimum' onChange={handleChange} name='experience-min' hasError={error['experience-min'] ? true : false} error={error} style='w-[244.5px]' />
             </div>
             <div>
-              <Inputs value={formData['experience-max']} placeholder='Maximum' onChange={handleChange} name='experience-max' hasError={error['experience-max'] ? true : false} error={error} />
+              <Inputs value={formData['experience-max']} placeholder='Maximum' onChange={handleChange} name='experience-max' hasError={error['experience-max'] ? true : false} error={error} style='w-[244.5px]' />
             </div>
           </div>
-          {/* <label htmlFor='location' className={`flex flex-start text-[#212121] font-poppins my-sm mt-24px`}>Salary</label> */}
+        
         <Label name='salary' title='Salary' required={false} extraStyles='mt-24px'/>
           <div className='w-full flex justify-between'>
             <div>
-              <Inputs value={formData['salary-min']} placeholder='Minimum' onChange={handleChange} name='salary-min' hasError={error['salary-min'] ? true : false} error={error} />
+              <Inputs value={formData['salary-min']} placeholder='Minimum' onChange={handleChange} name='salary-min' hasError={error['salary-min'] ? true : false} error={error} style='w-[244.5px]'/>
             </div>
             <div>
 
-              <Inputs value={formData['salary-max']} placeholder='Maximum' onChange={handleChange} name='salary-max' hasError={error['salary-max'] ? true : false} error={error} />
+              <Inputs value={formData['salary-max']} placeholder='Maximum' onChange={handleChange} name='salary-max' hasError={error['salary-max'] ? true : false} error={error} style='w-[244.5px]' />
             </div>
           </div>
           <div className='w-full mt-24px'>
@@ -149,9 +154,9 @@ const Form = () => {
               <span className="ml-2 text-placeholder-color font-poppins">External Apply</span>
             </label>
           </div>
-          {error['apply-type'] ? <><span className='text-error-color flex justify-start'>{error.message}</span></> : ''}
+          {error['apply-type'] &&<><span className='text-error-color flex justify-start'>Apply Type is required</span></> }
           <div className='w-full flex flex- justify-end mt-96px'>
-            <Button width='w-custom-btn-width' text='Save' onClick={handleSubmit} />
+            <Button width='w-[72px]' text='Save' onClick={handleSubmit} />
           </div>
         </form>
       </>
