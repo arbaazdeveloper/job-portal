@@ -114,21 +114,21 @@ const Form = () => {
           <Label title='Experience' name='experience' extraStyles='mt-24px' className='mt-24px'/>
           <div className='w-full flex justify-between '>
             <div>
-              <Inputs value={formData['experience-min']} placeholder='Minimum' onChange={handleChange} name='experience-min' hasError={error['experience-min'] ? true : false} error={error} style='!w-[244.5px]' />
+              <Inputs value={formData['experience-min']} placeholder='Minimum' onChange={handleChange} name='experience-min' hasError={error['experience-min'] ? true : false} error={error} extraStyle={'!w-[244.5px]'} />
             </div>
             <div>
-              <Inputs value={formData['experience-max']} placeholder='Maximum' onChange={handleChange} name='experience-max' hasError={error['experience-max'] ? true : false} error={error} style='!w-[244.5px]' />
+              <Inputs value={formData['experience-max']} placeholder='Maximum' onChange={handleChange} name='experience-max' hasError={error['experience-max'] ? true : false} error={error} extraStyle={'!w-[244.5px]'} />
             </div>
           </div>
         
         <Label name='salary' title='Salary' required={false} extraStyles='mt-24px'/>
           <div className='w-full flex justify-between'>
             <div>
-              <Inputs value={formData['salary-min']} placeholder='Minimum' onChange={handleChange} name='salary-min' hasError={error['salary-min'] ? true : false} error={error} style='!w-[244.5px]'/>
+              <Inputs value={formData['salary-min']} placeholder='Minimum' onChange={handleChange} name='salary-min' hasError={error['salary-min'] ? true : false} error={error} extraStyle='!w-[244.5px]'/>
             </div>
             <div>
 
-              <Inputs value={formData['salary-max']} placeholder='Maximum' onChange={handleChange} name='salary-max' hasError={error['salary-max'] ? true : false} error={error} style='!w-[244.5px]' />
+              <Inputs value={formData['salary-max']} placeholder='Maximum' onChange={handleChange} name='salary-max' hasError={error['salary-max'] ? true : false} error={error} extraStyle='!w-[244.5px]' />
             </div>
           </div>
           <div className='w-full mt-24px'>
