@@ -4,6 +4,7 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+   
     borderRadius:{
       'lg':'10px',
       'sm':'5px',
@@ -57,6 +58,10 @@ module.exports = {
       },
       fontFamily: {
         'poppins': ['Poppins']
+      },
+      screens:{
+        'small-screen':{'max':'550px'}
+
       }
 
     },

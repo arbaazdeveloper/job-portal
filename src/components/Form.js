@@ -78,7 +78,7 @@ const Form = () => {
           <h3>{modalData.type === 'create' ? 'Create Job' : 'Edit Job'}</h3>
           <h3>Step 1</h3>
         </Dialog.Title>
-        <form className='flex flex-col w-full mt-24px'>
+        <form className='flex flex-col w-full mt-24px '>
           <div className='w-full'>
             <Label name='job-title' title='Job Title' required={true}/>
             <Inputs value={formData['job-title']} placeholder='ex.Ui Ux Designer' onChange={handleChange} name='job-title' hasError={error.title ? true : false} error={error} />
@@ -112,23 +112,23 @@ const Form = () => {
         </Dialog.Title>
         <form className='flex flex-col w-full mt-24px'>
           <Label title='Experience' name='experience' extraStyles='mt-24px' className='mt-24px'/>
-          <div className='w-full flex justify-between '>
-            <div>
-              <Inputs value={formData['experience-min']} placeholder='Minimum' onChange={handleChange} name='experience-min' hasError={error['experience-min'] ? true : false} error={error} extraStyle={'!w-[244.5px]'} />
+          <div className='w-full flex justify-between small-screen:flex-col'>
+            <div className='small-screen:flex  justify-start'>
+              <Inputs value={formData['experience-min']} placeholder='Minimum' onChange={handleChange} name='experience-min' hasError={error['experience-min'] ? true : false} error={error} extraStyle={'!w-[244.5px] small-screen:my-[10px]'} />
             </div>
-            <div>
-              <Inputs value={formData['experience-max']} placeholder='Maximum' onChange={handleChange} name='experience-max' hasError={error['experience-max'] ? true : false} error={error} extraStyle={'!w-[244.5px]'} />
+            <div className='small-screen:flex  justify-start'>
+              <Inputs value={formData['experience-max']} placeholder='Maximum' onChange={handleChange} name='experience-max' hasError={error['experience-max'] ? true : false} error={error} extraStyle={'!w-[244.5px] small-screen:my-[10px]'} />
             </div>
           </div>
         
         <Label name='salary' title='Salary' required={false} extraStyles='mt-24px'/>
-          <div className='w-full flex justify-between'>
-            <div>
-              <Inputs value={formData['salary-min']} placeholder='Minimum' onChange={handleChange} name='salary-min' hasError={error['salary-min'] ? true : false} error={error} extraStyle='!w-[244.5px]'/>
+          <div className='w-full flex justify-between small-screen:flex-col'>
+            <div className='small-screen:flex  justify-start'>
+              <Inputs value={formData['salary-min']} placeholder='Minimum' onChange={handleChange} name='salary-min' hasError={error['salary-min'] ? true : false} error={error} extraStyle='!w-[244.5px] small-screen:my-[10px]'/>
             </div>
-            <div>
+            <div className='small-screen:flex  justify-start'>
 
-              <Inputs value={formData['salary-max']} placeholder='Maximum' onChange={handleChange} name='salary-max' hasError={error['salary-max'] ? true : false} error={error} extraStyle='!w-[244.5px]' />
+              <Inputs value={formData['salary-max']} placeholder='Maximum' onChange={handleChange} name='salary-max' hasError={error['salary-max'] ? true : false} error={error} extraStyle='!w-[244.5px] small-screen:my-[10px]' />
             </div>
           </div>
           <div className='w-full mt-24px'>

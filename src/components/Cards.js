@@ -7,7 +7,7 @@ import Delete from './Delete'
 const Cards = (props) => {
   const {id,title,industry,company,location,experienceMinimum,experienceMaximum,employee,salaryMinimum,salaryMaximum,type,applyType}=props
   return (
-    <div className='box-border flex flex-wrap items-start p-4 gap-4 w-[830px] h-[320px] left-998.12 bg-white border border-card-border rounded-lg p-custom-padding'>
+    <div className=' box-border flex flex-wrap items-start p-4 gap-4 w-[830px] h-[320px] left-998.12 bg-white border border-card-border rounded-lg p-custom-padding small-screen:h-auto'>
     
         <div className='flex w-full'>
             <div>
